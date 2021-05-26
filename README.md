@@ -1,0 +1,1 @@
+This application is used for getting vaccine slot availablity.

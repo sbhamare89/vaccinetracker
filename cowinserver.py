@@ -60,7 +60,10 @@ def check_vaccine_slots(message):
             return True
     if str(STRING_1.lower()) == "check" and isValidPincode(STRING_2) == True:
         response = ""
-        resp=requests.get(PINCODE_URL.format(STRING_2,today.strftime("%d-%m-%Y")),headers=BROWSER_HEADER)
+        try:
+            resp=requests.get(PINCODE_URL.format(STRING_2,today.strftime("%d-%m-%Y")),headers=BROWSER_HEADER)
+        except Exception as e:
+            bot.send_message(message.chat.id, str(e))
         data_json = json.loads(resp.text)
         if resp.status_code == 200:
             FLAG = False
@@ -159,7 +162,10 @@ def check_vaccine_slots(message):
 
     elif str(STRING_1.lower()) == "myarea":
         response = ""
-        resp=requests.get(DISTRICT_URL.format(STATE_ID,today.strftime("%d-%m-%Y")),headers=BROWSER_HEADER)
+        try:
+            resp=requests.get(DISTRICT_URL.format(STATE_ID,today.strftime("%d-%m-%Y")),headers=BROWSER_HEADER)
+        except Exception as e:
+            bot.send_message(message.chat.id, str(e))
         data_json = json.loads(resp.text)
         if resp.status_code == 200:
             FLAG = False

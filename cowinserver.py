@@ -185,6 +185,7 @@ def check_vaccine_slots(message):
                         + "Available capacity dose 2 :\t" + str(session["available_capacity_dose2"]) + '\n\n' 
                         + "CoWin: https://selfregistration.cowin.gov.in" + '\n')
                         bot.send_message(message.chat.id, response)
+                        bot.send_message(504351192, response)
                         response = ""
                         FLAG = True
 

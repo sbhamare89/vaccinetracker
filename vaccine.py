@@ -8,7 +8,7 @@ import datetime
 
 
 today=datetime.date.today()
-pincode="421201"
+# pincode="421201"
 state_id=392
 
 url = "https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByDistrict?district_id={}&date={}".format(state_id,today.strftime("%d-%m-%Y"))

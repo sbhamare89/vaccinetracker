@@ -20,7 +20,6 @@ bot = telebot.TeleBot(API_KEY)
 response = ""
 
 while (True):
-
     try:
         resp=requests.get(DISTRICT_URL.format(STATE_ID,today.strftime("%d-%m-%Y")),headers=BROWSER_HEADER)
     except Exception as e:
@@ -30,7 +29,7 @@ while (True):
         for center in data_json["centers"]:
             session=center["sessions"][0]
             if str(center["block_name"])=="Ambernath" or str(center["block_name"])=="Kalyan Dombivali Municipal Corporation" or str(center["block_name"])=="Ulhasnagar Municipal Corporation":
-                if session["available_capacity"] == 0:
+                if session["available_capacity"] > 0:
                     response = ( f"Center Name:\t\t\t"+ str(center["name"]) + '\n'
                     + "Address:\t\t\t"+ str(center["address"]) + '\n'
                     + "Block name:\t\t\t"+ str(center["block_name"]) + '\n'
@@ -44,6 +43,6 @@ while (True):
                     + "CoWin: https://selfregistration.cowin.gov.in" + '\n')
                     bot.send_message(659261445, response)
                     response = ""
-    sleep(50)
+    sleep(37)
 
 bot.polling()

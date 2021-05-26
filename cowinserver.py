@@ -1,3 +1,5 @@
+# Developer : Sagar B
+
 import os
 import requests
 import telebot
